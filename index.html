@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Имя</p>
+<input id="name" placeholder="Имя"><br>
+<p>Фамилия</p>
+<input id="last_name" placeholder="Фамилия"><br>
+<p>Возраст</p>
+<input id="age" placeholder="Возраст"><br><br>
+<button id="save">Сохранить</button><button id="upload">Выгрузить</button><br>
+<!-- jQuery -->
+<script src="jquery.min.js"></script>
+<script>
+    $('#save').click(function() {
+        var name=$('#name').val();
+        var last_name=$('#last_name').val();
+        var age=$('#age').val();
+        console.log(name);
+        console.log(last_name);
+        console.log(age);
+        $.ajax({
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            url: 'http://www.nasimjon078.myjino.ru/api/client-save',
+            data: {
+                'name': name,
+                'last_name': last_name,
+                'age': age
+            },
+            success: function(msg){
+                alert(msg);
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
